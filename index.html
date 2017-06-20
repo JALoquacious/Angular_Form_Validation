@@ -8,38 +8,46 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:400,100,700,900" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/lib/angular/angular.min.js"></script>
-    <!--    <script src="js/app.js"></script>-->
+    <script src="js/app.js"></script>
 </head>
 
 <body>
     <div class="page">
-        <section class="card register" ng-app>
-            <form name="form" novalidate>
+        <section class="card register" ng-app="main" ng-controller="RegistrationController">
+            <form name="form" ng-submit="register()" novalidate>
 
                 <div class="textintro">
                     <h1>Form Validation</h1>
                     <p>Please fill out the following form.</p>
-                    <p>{{ message }}</p>
+                    <p ng-show="message">{{ message }}</p>
                 </div>
 
                 <fieldset>
-                    <input type="text" name="firstName" placeholder="First Name" ng-model="user.firstName" ng-required="true">
-                    <p class="error validationerror" ng-show="form.firstName.$invalid && form.firstName.$touched">
+                    <input type="text" name="firstName" placeholder="First Name"
+                           ng-model="user.firstName" ng-required="true">
+                    <p class="error validationerror"
+                       ng-show="form.firstName.$invalid && form.firstName.$touched">
                         You must fill out your first name.
                     </p>
 
-                    <input type="text" name="lastName" placeholder="Last Name" ng-model="user.lastName" ng-required="true">
-                    <p class="error validationerror" ng-show="form.lastName.$invalid && form.lastName.$touched">
+                    <input type="text" name="lastName" placeholder="Last Name"
+                           ng-model="user.lastName" ng-required="true">
+                    <p class="error validationerror"
+                       ng-show="form.lastName.$invalid && form.lastName.$touched">
                         You must fill out your last name.
                     </p>
 
-                    <input type="email" name="email" placeholder="Email" ng-model="user.email">
-                    <p class="error validationerror" ng-show="form.email.$invalid && form.email.$touched">
+                    <input type="email" name="email" placeholder="Email"
+                           ng-model="user.email">
+                    <p class="error validationerror"
+                       ng-show="form.email.$invalid && form.email.$touched">
                         This must be a valid email.
                     </p>
 
-                    <input type="password" name="password" placeholder="Password" ng-model="user.password" ng-minlength="6">
-                    <p class="error validationerror" ng-show="form.password.$invalid && form.password.$touched">
+                    <input type="password" name="password" placeholder="Password"
+                           ng-model="user.password" ng-minlength="6">
+                    <p class="error validationerror"
+                       ng-show="form.password.$invalid && form.password.$touched">
                         Password must be at least 6 characters.
                     </p>
                 </fieldset>
